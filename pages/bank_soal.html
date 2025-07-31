@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Soal - SIMAK</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+      body {
+        font-family: "Fredoka", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-blue-100 to-white min-h-screen">
+    <!-- Header -->
+    <header
+      class="bg-white shadow-md py-4 px-6 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <img src="../img/logo.png" alt="Logo" class="h-10 w-10" />
+        <h1 class="text-2xl font-bold text-blue-600 hidden sm:block">SIMAK</h1>
+      </div>
+      <nav>
+        <a href="learn.html" title="Kembali">
+          <i
+            data-lucide="arrow-left-circle"
+            class="w-7 h-7 text-red-500 hover:text-red-700"
+          ></i>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="rounded-2xlp-6 max-w-xl mx-auto mt-6">
+      <!-- Soal 1 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal1.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Kasih sayang ibu
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Kasih sayang Allah
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Kasih sayang ayah
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal2.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Dina
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Dini
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Rina
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal3.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Pelangi
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Bintang - bintang
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Bulan
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 4 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal4.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Malaikat
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Nabi Muhammad
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Allah
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 5 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal5.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Karena terjadi badai
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Karena terjadi banjir
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Karena melihat bintang
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 6 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal6.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Bintang - bintang
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Banjir bandang
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Pelangi
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 7 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal7.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Menangis
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Takut
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Sangat senang
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 8 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal8.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Menyayangi
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Menasihati
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Membenci
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 9 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal9.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Paman
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Ibu
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Pembantu
+          </button>
+        </div>
+      </div>
+
+      <!-- Soal 10 -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xl mx-auto mt-6">
+        <h1 class="text-xl font-bold mb-4 text-center text-gray-800">
+          Dengarkan Soal Berikut
+        </h1>
+
+        <audio id="soal-audio" controls class="w-full mb-6">
+          <source src="../audios/soal10.mp3" type="audio/mpeg" />
+          Browser tidak mendukung audio.
+        </audio>
+
+        <div class="space-y-4">
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            A. Takut
+          </button>
+          <button
+            onclick="periksaJawaban(false)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            B. Cemas
+          </button>
+          <button
+            onclick="periksaJawaban(true)"
+            class="w-full bg-blue-500 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition"
+          >
+            C. Sangat bahagia
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Suara Feedback -->
+    <audio id="audio-benar" src="../audios/benar.mp3"></audio>
+    <audio id="audio-salah" src="../audios/salah.mp3"></audio>
+
+    <script>
+      function periksaJawaban(isCorrect) {
+        const benar = document.getElementById("audio-benar");
+        const salah = document.getElementById("audio-salah");
+
+        // Reset semua audio
+        benar.pause();
+        benar.currentTime = 0;
+        salah.pause();
+        salah.currentTime = 0;
+
+        if (isCorrect) {
+          benar.play();
+        } else {
+          salah.play();
+        }
+      }
+
+      // Load ikon lucide
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

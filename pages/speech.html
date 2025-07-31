@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMAK - Perintah Suara</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+      body {
+        font-family: "Fredoka", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-blue-100">
+    <!-- NAVBAR -->
+    <header
+      class="bg-white shadow-md py-4 px-6 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <img src="../img/logo.png" alt="Logo" class="h-10 w-10" />
+        <h1 class="text-2xl font-bold text-blue-600 hidden sm:block">SIMAK</h1>
+      </div>
+      <nav class="flex gap-4 text-blue-600">
+        <a href="learn.html" title="Kembali">
+          <i
+            data-lucide="arrow-left-circle"
+            class="w-6 h-6 text-red-500 hover:text-red-700"
+          ></i>
+        </a>
+      </nav>
+    </header>
+    <div class="flex items-center justify-center min-h-screen">
+      <button
+        id="micButton"
+        class="bg-white p-6 rounded-full shadow-lg hover:bg-blue-200 transition"
+        title="Klik untuk mulai mendengarkan"
+      >
+        <i data-lucide="mic" class="w-10 h-10 text-blue-600"></i>
+      </button>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      const micButton = document.getElementById("micButton");
+      const recognition = new (window.SpeechRecognition ||
+        window.webkitSpeechRecognition)();
+      recognition.lang = "id-ID";
+      recognition.continuous = false;
+
+      const keywordMap = {
+        matematika: "matematika.html",
+        "bahasa indonesia": "bahasa_indonesia.html",
+        ipa: "ipa.html",
+        ips: "ips.html",
+        "bahasa inggris": "bahasa_inggris.html",
+        "pendidikan agama islam": "pai.html",
+        "seni budaya": "seni_budaya.html",
+      };
+
+      const speak = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "id-ID";
+        speechSynthesis.speak(utterance);
+      };
+
+      micButton.addEventListener("click", () => {
+        recognition.start();
+        speak("Silakan ucapkan nama mata pelajaran");
+      });
+
+      recognition.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript.toLowerCase();
+        console.log("Didengar:", spokenText);
+
+        for (const keyword in keywordMap) {
+          if (spokenText.includes(keyword)) {
+            const page = keywordMap[keyword];
+            speak(`Selamat datang di mata pelajaran ${keyword}`);
+            setTimeout(() => {
+              window.location.href = page;
+            }, 2500); // Tunggu ucapan selesai
+            return;
+          }
+        }
+
+        speak("Maaf, saya tidak mengenali mata pelajaran tersebut.");
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        speak("Terjadi kesalahan dalam pengenalan suara.");
+      };
+    </script>
+  </body>
+</html>

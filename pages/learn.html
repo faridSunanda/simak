@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIMAK - Pilih Pelajaran</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ikon -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+      body {
+        font-family: "Fredoka", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-blue-50 min-h-screen">
+    <!-- NAVBAR -->
+    <header
+      class="bg-white shadow-md py-4 px-6 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <img src="../img/logo.png" alt="Logo" class="h-10 w-10" />
+        <h1 class="text-2xl font-bold text-blue-600 hidden sm:block">SIMAK</h1>
+      </div>
+      <nav class="flex gap-4 text-blue-600">
+        <a href="speech.html" title="Speech">
+          <i data-lucide="mic" class="w-6 h-6 hover:text-blue-800"></i>
+        </a>
+        <a href="bank_soal.html" title="Bank Soal">
+          <i data-lucide="book-open" class="w-6 h-6 hover:text-blue-800"></i>
+        </a>
+        <a href="../index.html" title="Kembali">
+          <i
+            data-lucide="arrow-left-circle"
+            class="w-6 h-6 text-red-500 hover:text-red-700"
+          ></i>
+        </a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="p-6">
+      <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">
+        Pilih Mata Pelajaran
+      </h2>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        <!-- Contoh Card -->
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/math.png"
+            alt="Matematika"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Matematika</h3>
+          <a
+            href="matematika.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/bindo.png"
+            alt="Bahasa Indonesia"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">
+            Bahasa Indonesia
+          </h3>
+          <a
+            href="bahasa_indonesia.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/ipa.png"
+            alt="IPA"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">IPA</h3>
+          <a
+            href="ipa.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/ips.png"
+            alt="IPS"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">IPS</h3>
+          <a
+            href="ips.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <!-- Mapel tambahan -->
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/pai.png"
+            alt="Pendidikan Agama Islam"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">
+            Pendidikan Agama Islam
+          </h3>
+          <a
+            href="pai.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/bing.png"
+            alt="Bahasa Inggris"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">
+            Bahasa Inggris
+          </h3>
+          <a
+            href="bahasa_inggris.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center hover:shadow-lg transition"
+        >
+          <img
+            src="../img/seni.png"
+            alt="Seni Budaya"
+            class="w-full h-36 object-cover rounded-md mb-3"
+          />
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Seni Budaya</h3>
+          <a
+            href="seni_budaya.html"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition"
+            >Belajar</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <script>
+      lucide.createIcons(); // load icon lucide
+    </script>
+  </body>
+</html>

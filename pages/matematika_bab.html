@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bab - SIMAK</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+      body {
+        font-family: "Fredoka", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-blue-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header
+      class="bg-white shadow-md py-4 px-6 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <img src="../img/logo.png" alt="Logo" class="h-10 w-10" />
+        <h1 class="text-2xl font-bold text-blue-600 hidden sm:block">SIMAK</h1>
+      </div>
+      <nav class="flex gap-4 text-blue-600">
+        <a href="matematika.html" title="Kembali">
+          <i
+            data-lucide="arrow-left-circle"
+            class="w-6 h-6 text-red-500 hover:text-red-700"
+          ></i>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="flex-1 flex flex-col items-center justify-center text-center px-4 py-8"
+    >
+      <h1 class="text-3xl font-bold text-blue-800 mb-6">
+        Mata Pelajaran Matematika
+      </h1>
+
+      <!-- Audio Controls -->
+      <div class="flex gap-4 items-center">
+        <button
+          onclick="playAudio()"
+          class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow"
+        >
+          <i data-lucide="play" class="w-5 h-5"></i>
+        </button>
+        <button
+          onclick="pauseAudio()"
+          class="bg-yellow-400 hover:bg-yellow-500 text-white p-3 rounded-full shadow"
+        >
+          <i data-lucide="pause" class="w-5 h-5"></i>
+        </button>
+        <button
+          onclick="restartAudio()"
+          class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full shadow"
+        >
+          <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Hidden Audio Element -->
+      <audio id="audioMateri" src="../audios/mtk.mp3"></audio>
+    </main>
+
+    <script>
+      lucide.createIcons();
+
+      const audio = document.getElementById("audioMateri");
+      function playAudio() {
+        audio.play();
+      }
+      function pauseAudio() {
+        audio.pause();
+      }
+      function restartAudio() {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    </script>
+  </body>
+</html>
