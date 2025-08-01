@@ -32,6 +32,7 @@
         </a>
       </nav>
     </header>
+
     <div class="flex items-center justify-center min-h-screen">
       <button
         id="micButton"
@@ -46,6 +47,7 @@
       lucide.createIcons();
 
       const micButton = document.getElementById("micButton");
+
       const recognition = new (window.SpeechRecognition ||
         window.webkitSpeechRecognition)();
       recognition.lang = "id-ID";
@@ -62,14 +64,16 @@
       };
 
       const speak = (text) => {
+        speechSynthesis.cancel(); // Hindari suara dobel
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "id-ID";
         speechSynthesis.speak(utterance);
       };
 
       micButton.addEventListener("click", () => {
+        micButton.classList.add("animate-pulse");
         recognition.start();
-        speak("Silakan ucapkan nama mata pelajaran");
+        speak("Silakan ucapkan nama mata pelajaran.");
       });
 
       recognition.onresult = (event) => {
@@ -77,12 +81,22 @@
         console.log("Didengar:", spokenText);
 
         for (const keyword in keywordMap) {
-          if (spokenText.includes(keyword)) {
+          const variations = [
+            keyword,
+            `buka ${keyword}`,
+            `pelajaran ${keyword}`,
+            `buka pelajaran ${keyword}`,
+            `saya mau belajar ${keyword}`,
+            `saya ingin belajar ${keyword}`,
+            `saya ingin buka ${keyword}`,
+          ];
+
+          if (variations.some((phrase) => spokenText.includes(phrase))) {
             const page = keywordMap[keyword];
             speak(`Selamat datang di mata pelajaran ${keyword}`);
             setTimeout(() => {
               window.location.href = page;
-            }, 2500); // Tunggu ucapan selesai
+            }, 2000);
             return;
           }
         }
@@ -93,6 +107,10 @@
       recognition.onerror = (event) => {
         console.error("Speech recognition error:", event.error);
         speak("Terjadi kesalahan dalam pengenalan suara.");
+      };
+
+      recognition.onend = () => {
+        micButton.classList.remove("animate-pulse");
       };
     </script>
   </body>
