@@ -51,10 +51,11 @@
         if (typeof window.AppInventor !== "undefined") {
           const spokenText = window.AppInventor.getWebViewString();
           if (spokenText && spokenText !== "mic_clicked") {
+            console.log("Diterima dari Kodular:", spokenText);
             processSpeech(spokenText.toLowerCase());
           }
         }
-      }, 1000);
+      }, 500);
 
       // Kirim sinyal ke Kodular kalau tombol mic diklik
       const micButton = document.getElementById("micButton");
