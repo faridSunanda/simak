@@ -105,12 +105,8 @@
 
           if (variations.some((phrase) => spokenText.includes(phrase))) {
             speak(`Membuka buku mata pelajaran ${keyword}`);
-
-            setTimeout(() => {
-              window.location.href = keywordMap[keyword];
-              window.AppInventor.setWebViewString(""); // reset setelah redirect
-            }, 1000); // kasih jeda 2.5 detik untuk suara selesai dulu
-
+            window.location.href = keywordMap[keyword]; // langsung redirect
+            window.AppInventor.setWebViewString("");
             return;
           }
         }
