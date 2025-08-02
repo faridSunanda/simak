@@ -52,8 +52,6 @@
         if (typeof window.AppInventor !== "undefined") {
           const spokenText = window.AppInventor.getWebViewString();
           if (spokenText && spokenText !== "mic_clicked") {
-            document.getElementById("log").textContent =
-              "Dari Kodular: " + spokenText;
             processSpeech(spokenText.toLowerCase());
           }
         }
@@ -71,15 +69,15 @@
       });
 
       // Fungsi untuk bicara
-      const speak = (text) => {
-        speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "id-ID";
-        speechSynthesis.speak(utterance);
-      };
+      // const speak = (text) => {
+      //   speechSynthesis.cancel();
+      //   const utterance = new SpeechSynthesisUtterance(text);
+      //   utterance.lang = "id-ID";
+      //   speechSynthesis.speak(utterance);
+      // };
 
       // Fungsi untuk memproses ucapan
-      const processSpeech = (text) => {
+      const processSpeech = (spokenText) => {
         const keywordMap = {
           matematika: "matematika.html",
           "bahasa indonesia": "bahasa_indonesia.html",
