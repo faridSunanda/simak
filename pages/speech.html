@@ -108,14 +108,19 @@
       }
 
       const micButton = document.getElementById("micButton");
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
       micButton.addEventListener("click", () => {
         micButton.classList.add("animate-pulse");
-        if (typeof window.AppInventor !== "undefined") {
-          document.getElementById("customAlert").style.display = "none";
+
+        if (typeof window.AppInventor !== "undefined" && isMobile) {
+          // Jalan di Kodular
           window.AppInventor.setWebViewString("mic_clicked");
-        } else {
+        } else if (!isMobile) {
+          // Jalan di Desktop browser
           document.getElementById("customAlert").style.display = "flex";
         }
+        // Kalau mobile browser → nggak ngapa-ngapain
       });
 
       let lastSpoken = "";
