@@ -100,9 +100,12 @@
           ];
 
           if (variations.some((phrase) => text.includes(phrase))) {
-            speak(`Selamat datang di mata pelajaran ${keyword}`);
             setTimeout(() => {
-              window.location.href = keywordMap[keyword];
+              if (typeof window.AppInventor !== "undefined") {
+                window.AppInventor.setWebViewString(
+                  "redirect:" + keywordMap[keyword]
+                );
+              }
             }, 2000);
             return;
           }
