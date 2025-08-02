@@ -47,17 +47,6 @@
     <script>
       lucide.createIcons();
 
-      // Setiap 1 detik, cek apakah ada hasil suara dari Kodular
-      setInterval(() => {
-        if (typeof window.AppInventor !== "undefined") {
-          const spokenText = window.AppInventor.getWebViewString();
-          if (spokenText && spokenText !== "mic_clicked") {
-            processSpeech(spokenText.toLowerCase());
-          }
-        }
-      }, 1000);
-
-      // Kirim sinyal ke Kodular kalau tombol mic diklik
       const micButton = document.getElementById("micButton");
       micButton.addEventListener("click", () => {
         micButton.classList.add("animate-pulse");
@@ -68,15 +57,30 @@
         }
       });
 
-      // Fungsi untuk bicara
-      // const speak = (text) => {
-      //   speechSynthesis.cancel();
-      //   const utterance = new SpeechSynthesisUtterance(text);
-      //   utterance.lang = "id-ID";
-      //   speechSynthesis.speak(utterance);
-      // };
+      let lastSpoken = "";
 
-      // Fungsi untuk memproses ucapan
+      setInterval(() => {
+        if (typeof window.AppInventor !== "undefined") {
+          const spokenText = window.AppInventor.getWebViewString();
+
+          // Cek kalau ada input suara baru
+          if (
+            spokenText &&
+            spokenText !== lastSpoken &&
+            !spokenText.startsWith("redirect:")
+          ) {
+            lastSpoken = spokenText;
+            processSpeech(spokenText.toLowerCase());
+          }
+
+          // Kalau Kodular ngasih sinyal redirect langsung
+          if (spokenText.startsWith("redirect:")) {
+            const page = spokenText.replace("redirect:", "");
+            window.location.href = page;
+          }
+        }
+      }, 1000);
+
       const processSpeech = (spokenText) => {
         const keywordMap = {
           matematika: "matematika.html",
@@ -99,19 +103,20 @@
             `saya ingin buka ${keyword}`,
           ];
 
-          if (variations.some((phrase) => text.includes(phrase))) {
-            setTimeout(() => {
-              if (typeof window.AppInventor !== "undefined") {
-                window.AppInventor.setWebViewString(
-                  "redirect:" + keywordMap[keyword]
-                );
-              }
-            }, 2000);
+          if (variations.some((phrase) => spokenText.includes(phrase))) {
+            // Bisa redirect langsung dari JS, atau kasih sinyal ke Kodular
+            window.location.href = keywordMap[keyword]; // langsung redirect
             return;
           }
         }
 
         speak("Maaf, saya tidak mengenali mata pelajaran tersebut.");
+      };
+
+      // Tambahan: Fungsi bicara
+      const speak = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
       };
     </script>
   </body>
