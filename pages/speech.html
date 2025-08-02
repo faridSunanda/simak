@@ -46,39 +46,46 @@
     <script>
       lucide.createIcons();
 
+      // Setiap 1 detik, cek apakah ada hasil suara dari Kodular
+      setInterval(() => {
+        if (typeof window.AppInventor !== "undefined") {
+          const spokenText = window.AppInventor.getWebViewString();
+          if (spokenText && spokenText !== "mic_clicked") {
+            processSpeech(spokenText.toLowerCase());
+          }
+        }
+      }, 1000);
+
+      // Kirim sinyal ke Kodular kalau tombol mic diklik
       const micButton = document.getElementById("micButton");
+      micButton.addEventListener("click", () => {
+        micButton.classList.add("animate-pulse");
+        if (typeof window.AppInventor !== "undefined") {
+          window.AppInventor.setWebViewString("mic_clicked");
+        } else {
+          alert("Fitur pengenalan suara tidak tersedia.");
+        }
+      });
 
-      const recognition = new (window.SpeechRecognition ||
-        window.webkitSpeechRecognition)();
-      recognition.lang = "id-ID";
-      recognition.continuous = false;
-
-      const keywordMap = {
-        matematika: "matematika.html",
-        "bahasa indonesia": "bahasa_indonesia.html",
-        ipa: "ipa.html",
-        ips: "ips.html",
-        "bahasa inggris": "bahasa_inggris.html",
-        "pendidikan agama islam": "pai.html",
-        "seni budaya": "seni_budaya.html",
-      };
-
+      // Fungsi untuk bicara
       const speak = (text) => {
-        speechSynthesis.cancel(); // Hindari suara dobel
+        speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "id-ID";
         speechSynthesis.speak(utterance);
       };
 
-      micButton.addEventListener("click", () => {
-        micButton.classList.add("animate-pulse");
-        recognition.start();
-        speak("Silakan ucapkan nama mata pelajaran.");
-      });
-
-      recognition.onresult = (event) => {
-        const spokenText = event.results[0][0].transcript.toLowerCase();
-        console.log("Didengar:", spokenText);
+      // Fungsi untuk memproses ucapan
+      const processSpeech = (text) => {
+        const keywordMap = {
+          matematika: "matematika.html",
+          "bahasa indonesia": "bahasa_indonesia.html",
+          ipa: "ipa.html",
+          ips: "ips.html",
+          "bahasa inggris": "bahasa_inggris.html",
+          "pendidikan agama islam": "pai.html",
+          "seni budaya": "seni_budaya.html",
+        };
 
         for (const keyword in keywordMap) {
           const variations = [
@@ -91,26 +98,16 @@
             `saya ingin buka ${keyword}`,
           ];
 
-          if (variations.some((phrase) => spokenText.includes(phrase))) {
-            const page = keywordMap[keyword];
+          if (variations.some((phrase) => text.includes(phrase))) {
             speak(`Selamat datang di mata pelajaran ${keyword}`);
             setTimeout(() => {
-              window.location.href = page;
+              window.location.href = keywordMap[keyword];
             }, 2000);
             return;
           }
         }
 
         speak("Maaf, saya tidak mengenali mata pelajaran tersebut.");
-      };
-
-      recognition.onerror = (event) => {
-        console.error("Speech recognition error:", event.error);
-        speak("Terjadi kesalahan dalam pengenalan suara.");
-      };
-
-      recognition.onend = () => {
-        micButton.classList.remove("animate-pulse");
       };
     </script>
   </body>
