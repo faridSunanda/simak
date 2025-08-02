@@ -41,6 +41,7 @@
       >
         <i data-lucide="mic" class="w-10 h-10 text-blue-600"></i>
       </button>
+      <p id="log" class="text-center text-sm text-gray-600 mt-4"></p>
     </div>
 
     <script>
@@ -51,11 +52,12 @@
         if (typeof window.AppInventor !== "undefined") {
           const spokenText = window.AppInventor.getWebViewString();
           if (spokenText && spokenText !== "mic_clicked") {
-            console.log("Diterima dari Kodular:", spokenText);
+            document.getElementById("log").textContent =
+              "Dari Kodular: " + spokenText;
             processSpeech(spokenText.toLowerCase());
           }
         }
-      }, 500);
+      }, 1000);
 
       // Kirim sinyal ke Kodular kalau tombol mic diklik
       const micButton = document.getElementById("micButton");
