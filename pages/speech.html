@@ -104,8 +104,8 @@
           ];
 
           if (variations.some((phrase) => spokenText.includes(phrase))) {
-            // Bisa redirect langsung dari JS, atau kasih sinyal ke Kodular
             window.location.href = keywordMap[keyword]; // langsung redirect
+            window.AppInventor.setWebViewString("");
             return;
           }
         }
