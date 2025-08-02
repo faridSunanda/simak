@@ -111,6 +111,7 @@
       micButton.addEventListener("click", () => {
         micButton.classList.add("animate-pulse");
         if (typeof window.AppInventor !== "undefined") {
+          document.getElementById("customAlert").style.display = "none";
           window.AppInventor.setWebViewString("mic_clicked");
         } else {
           document.getElementById("customAlert").style.display = "flex";
