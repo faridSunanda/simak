@@ -47,6 +47,12 @@
     <script>
       lucide.createIcons();
 
+      const speak = (text) => {
+        speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(utterance);
+      };
+
       const micButton = document.getElementById("micButton");
       micButton.addEventListener("click", () => {
         micButton.classList.add("animate-pulse");
@@ -104,6 +110,7 @@
           ];
 
           if (variations.some((phrase) => spokenText.includes(phrase))) {
+            speak(`Membuka buku mata pelajaran ${keyword}`);
             window.location.href = keywordMap[keyword]; // langsung redirect
             window.AppInventor.setWebViewString("");
             return;
@@ -111,12 +118,6 @@
         }
 
         speak("Maaf, saya tidak mengenali mata pelajaran tersebut.");
-      };
-
-      // Tambahan: Fungsi bicara
-      const speak = (text) => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        speechSynthesis.speak(utterance);
       };
     </script>
   </body>
